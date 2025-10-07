@@ -1,3 +1,5 @@
+// Készítő: Patika30
+
 (async () => {
     const unitNames = [
         'Lándzsás', 'Kardforgató', 'Bárdos', 'Íjász',
@@ -5,7 +7,7 @@
         'Faltörő kos', 'Katapult', 'Lovag', 'Főnemes', 'Milícia'
     ];
 
-    // Saját játékosnév kinyerése a game_data objektumból, ha elérhető
+    // Saját fióknév kinyerése a game_data objektumból, ha elérhető
     const sajatNev = (typeof game_data === 'object' && game_data.player && game_data.player.name)
         ? game_data.player.name.trim()
         : 'Saját fiók';
@@ -22,7 +24,7 @@
         // Ha nincs két link, vagy más fiók neve nincs megadva, akkor saját név (saját faluban lévő erősítés)
         let playerText = (links.length < 2 || !links[1].textContent.trim()) ? sajatNev : links[1].textContent.trim();
 
-        // Player név zárójel esetén kiolvasás (más fiókok)
+        // Fióknév zárójel esetén kiolvasás (más fiókok)
         const parenStart = playerText.indexOf('(');
         const parenEnd = playerText.indexOf(')');
         let player = '';
