@@ -7,10 +7,9 @@
         'Faltörő kos', 'Katapult', 'Lovag', 'Főnemes', 'Milícia'
     ];
 
-    // Saját fióknév kinyerése a game_data objektumból, ha elérhető
-    const sajatNev = (typeof game_data === 'object' && game_data.player && game_data.player.name)
-        ? game_data.player.name.trim()
-        : 'Saját fiók';
+    const sajatNev = (typeof game_data === 'object' && game_data.player && game_data.player.name) ?
+        game_data.player.name.trim() :
+        'Saját fiók';
 
     const rows = document.querySelectorAll('tr[class^="village_row_"]');
     let playerTotals = {};
@@ -20,11 +19,8 @@
         if (cells.length < 2) return;
 
         const links = cells[0].querySelectorAll('a');
-
-        // Ha nincs két link, vagy más fiók neve nincs megadva, akkor saját név (saját faluban lévő erősítés)
         let playerText = (links.length < 2 || !links[1].textContent.trim()) ? sajatNev : links[1].textContent.trim();
 
-        // Fióknév zárójel esetén kiolvasás (más fiókok)
         const parenStart = playerText.indexOf('(');
         const parenEnd = playerText.indexOf(')');
         let player = '';
@@ -47,7 +43,6 @@
         });
     });
 
-    // Régi modal és overlay eltávolítása, ha léteznek
     let existingModal = document.getElementById('clanReinforcementsModal');
     if (existingModal) existingModal.remove();
     let existingOverlay = document.getElementById('clanReinforcementsOverlay');
@@ -86,6 +81,25 @@
     }
 
     html += `</tbody></table>`;
+
+    // SZERZŐI FELIRAT: közvetlenül a táblázat alá, jobb alsó sarokban
+    html += `<div style="
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        margin-top: 8px;
+    ">
+        <span style="
+            font-size: 13px;
+            color: #000000;
+            opacity: 0.85;
+            font-style: italic;
+            text-align: right;">
+            Készítette: Patika30
+        </span>
+    </div>`;
+
     modal.innerHTML = html;
 
     modal.querySelector('#closeReinforcementsModal').onclick = () => {
