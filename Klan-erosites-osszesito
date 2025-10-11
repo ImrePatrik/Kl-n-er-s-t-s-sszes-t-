@@ -96,7 +96,7 @@
 
     html += `</tbody></table>`;
 
-    // SZERZŐI FELIRAT
+    // Szerzői felirat
     html += `<div style="
         width: 100%;
         display: flex;
