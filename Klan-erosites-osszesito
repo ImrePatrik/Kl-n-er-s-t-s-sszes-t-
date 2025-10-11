@@ -1,4 +1,4 @@
-// Készítő: Patika30
+//Készítette: Patika30
 
 (async () => {
     const unitNames = [
@@ -72,6 +72,7 @@
     });
     html += `</tr></thead><tbody>`;
 
+    // Játékosok sorai
     for (const player in playerTotals) {
         html += `<tr><td style="border: 2px solid #fff; padding:5px; font-weight:bold; text-align:center;">${player}</td>`;
         playerTotals[player].forEach(num => {
@@ -80,9 +81,22 @@
         html += `</tr>`;
     }
 
+    // Összesítő sor hozzáadása
+    const totalUnits = new Array(unitNames.length).fill(0);
+    for (const player in playerTotals) {
+        playerTotals[player].forEach((num, idx) => {
+            totalUnits[idx] += num;
+        });
+    }
+    html += `<tr style="font-weight:bold; background-color:#f0e6c8;"><td style="border: 2px solid #fff; padding:5px; text-align:center;">Összesen</td>`;
+    totalUnits.forEach(num => {
+        html += `<td style="border: 2px solid #fff; padding:5px; text-align:center;">${num > 0 ? num : ''}</td>`;
+    });
+    html += `</tr>`;
+
     html += `</tbody></table>`;
 
-    // SZERZŐI FELIRAT: közvetlenül a táblázat alá, jobb alsó sarokban
+    // SZERZŐI FELIRAT
     html += `<div style="
         width: 100%;
         display: flex;
@@ -125,3 +139,4 @@
     document.body.appendChild(overlay);
     document.body.appendChild(modal);
 })();
+
