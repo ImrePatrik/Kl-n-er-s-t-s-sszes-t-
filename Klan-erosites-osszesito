@@ -1,4 +1,4 @@
-//Készítette: Patika30
+//Készítő: Patika30
 
 (async () => {
     const unitNames = [
