@@ -4,7 +4,8 @@
     const unitNames = [
         'Lándzsás', 'Kardforgató', 'Bárdos', 'Íjász',
         'Kém', 'Könnyűlovas', 'Lovas íjász', 'Nehézlovas',
-        'Faltörő kos', 'Katapult', 'Lovag', 'Főnemes', 'Milícia'
+        'Faltörő kos', 'Katapult', 'Lovag', 'Főnemes'
+        // 'Milícia' eltávolítva
     ];
 
     const sajatNev = (typeof game_data === 'object' && game_data.player && game_data.player.name) ?
@@ -139,4 +140,3 @@
     document.body.appendChild(overlay);
     document.body.appendChild(modal);
 })();
-
